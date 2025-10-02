@@ -7,11 +7,7 @@
         <collection id="advancesDc"
                     class="com.company.peb.entity.Advance">
             <fetchPlan extends="_base">
-                <property name="contractStage" fetchPlan="_base">
-                    <property name="location" fetchPlan="_base"/>
-                    <property name="customer" fetchPlan="_base"/>
-                    <property name="contract" fetchPlan="_base"/>
-                </property>
+                <property name="contractStage" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="advancesDl" readOnly="true">
                 <query>

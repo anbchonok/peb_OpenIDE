@@ -6,14 +6,7 @@
         <instance id="advanceDc"
                   class="com.company.peb.entity.Advance">
             <fetchPlan extends="_base">
-                <property name="contractStage" fetchPlan="_base">
-                    <property name="location" fetchPlan="_base"/>
-                    <property name="customer" fetchPlan="_base"/>
-                    <property name="contract" fetchPlan="_base"/>
-                    <property name="user" fetchPlan="_base">
-                        <property name="department" fetchPlan="_base"/>
-                    </property>
-                </property>
+                <property name="contractStage" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="advanceDl"/>
         </instance>

@@ -8,43 +8,11 @@
                     class="com.company.peb.entity.ContractStage">
             <fetchPlan extends="_base">
                 <property name="location" fetchPlan="_base"/>
-                <property name="customer" fetchPlan="_base">
-                    <property name="location" fetchPlan="_base"/>
-                    <property name="customer" fetchPlan="_base">
-                        <property name="location" fetchPlan="_base"/>
-                        <property name="customer" fetchPlan="_base">
-                            <property name="location" fetchPlan="_base"/>
-                            <property name="customer" fetchPlan="_base">
-                                <property name="location" fetchPlan="_base"/>
-                                <property name="customer" fetchPlan="_base">
-                                    <property name="location" fetchPlan="_base"/>
-                                    <property name="customer" fetchPlan="_base">
-                                        <property name="location" fetchPlan="_base"/>
-                                        <property name="customer" fetchPlan="_base">
-                                            <property name="location" fetchPlan="_base"/>
-                                            <property name="customer" fetchPlan="_base">
-                                                <property name="location" fetchPlan="_base"/>
-                                                <property name="customer" fetchPlan="_base">
-                                                    <property name="location" fetchPlan="_base"/>
-                                                    <property name="customer" fetchPlan="_base">
-                                                        <property name="location" fetchPlan="_base"/>
-                                                        <property name="customer" fetchPlan="_base">
-                                                            <property name="location" fetchPlan="_base"/>
-                                                            <property name="customer" fetchPlan="_base"/>
-                                                        </property>
-                                                    </property>
-                                                </property>
-                                                <property name="contract" fetchPlan="_base"/>
-                                                <property name="user" fetchPlan="_base"/>
-                                            </property>
-                                        </property>
-                                    </property>
-                                </property>
-                            </property>
-                        </property>
-                    </property>
+                <property name="customer" fetchPlan="_base"/>
+                <property name="contract" fetchPlan="_base">
+                    <property name="application" fetchPlan="_base"/>
+                    <property name="typeDeadline" fetchPlan="_base"/>
                 </property>
-                <property name="contract" fetchPlan="_base"/>
                 <property name="user" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="contractStagesDl" readOnly="true">
