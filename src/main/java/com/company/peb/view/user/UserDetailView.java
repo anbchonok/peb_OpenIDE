@@ -30,8 +30,6 @@ public class UserDetailView extends StandardDetailView<User> {
     @ViewComponent
     private PasswordField confirmPasswordField;
     @ViewComponent
-    private ComboBox<String> timeZoneField;
-    @ViewComponent
     private MessageBundle messageBundle;
     @Autowired
     private Notifications notifications;
@@ -41,10 +39,6 @@ public class UserDetailView extends StandardDetailView<User> {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Subscribe
-    public void onInit(final InitEvent event) {
-        timeZoneField.setItems(List.of(TimeZone.getAvailableIDs()));
-    }
 
     @Subscribe
     public void onInitEntity(final InitEntityEvent<User> event) {

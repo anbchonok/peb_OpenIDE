@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://costFOTListView.title"
+      focusComponent="costFOTsDataGrid">
+    <data>
+        <collection id="costFOTsDc"
+                    class="com.company.peb.entity.CostFOT">
+            <fetchPlan extends="_base">
+                <property name="contractStage" fetchPlan="_base">
+                    <property name="location" fetchPlan="_base"/>
+                    <property name="customer" fetchPlan="_base">
+                        <property name="location" fetchPlan="_base"/>
+                        <property name="customer" fetchPlan="_base">
+                            <property name="location" fetchPlan="_base"/>
+                            <property name="customer" fetchPlan="_base">
+                                <property name="location" fetchPlan="_base"/>
+                                <property name="customer" fetchPlan="_base"/>
+                                <property name="contract" fetchPlan="_base"/>
+                                <property name="user" fetchPlan="_base"/>
+                            </property>
+                        </property>
+                        <property name="contract" fetchPlan="_base"/>
+                    </property>
+                    <property name="contract" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader id="costFOTsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from CostFOT e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="costFOTsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createButton" action="costFOTsDataGrid.createAction"/>
+            <button id="editButton" action="costFOTsDataGrid.editAction"/>
+            <button id="removeButton" action="costFOTsDataGrid.removeAction"/>
+            <simplePagination id="pagination" dataLoader="costFOTsDl"/>
+        </hbox>
+        <dataGrid id="costFOTsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="costFOTsDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="createAction" type="list_create"/>
+                <action id="editAction" type="list_edit"/>
+                <action id="removeAction" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="month"/>
+                <column property="year"/>
+                <column property="sum"/>
+                <column property="contractStage"/>
+                <column property="paymentType"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

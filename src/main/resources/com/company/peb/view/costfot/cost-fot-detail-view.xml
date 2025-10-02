@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://costFOTDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="costFOTDc"
+                  class="com.company.peb.entity.CostFOT">
+            <fetchPlan extends="_base">
+                <property name="contractStage" fetchPlan="_base">
+                    <property name="location" fetchPlan="_base"/>
+                    <property name="customer" fetchPlan="_base">
+                        <property name="location" fetchPlan="_base"/>
+                        <property name="customer" fetchPlan="_base">
+                            <property name="location" fetchPlan="_base"/>
+                            <property name="customer" fetchPlan="_base">
+                                <property name="location" fetchPlan="_base"/>
+                                <property name="customer" fetchPlan="_base"/>
+                                <property name="contract" fetchPlan="_base"/>
+                                <property name="user" fetchPlan="_base"/>
+                            </property>
+                        </property>
+                        <property name="contract" fetchPlan="_base"/>
+                    </property>
+                    <property name="contract" fetchPlan="_base"/>
+                    <property name="user" fetchPlan="_base">
+                        <property name="department" fetchPlan="_base"/>
+                    </property>
+                </property>
+            </fetchPlan>
+            <loader id="costFOTDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="costFOTDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+                <responsiveStep minWidth="40em" columns="2"/>
+            </responsiveSteps>
+            <textField id="monthField" property="month"/>
+            <textField id="yearField" property="year"/>
+            <textField id="sumField" property="sum"/>
+            <entityPicker id="contractStageField" property="contractStage">
+                <actions>
+                    <action id="entityLookupAction" type="entity_lookup"/>
+                    <action id="entityClearAction" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <select id="paymentTypeField" property="paymentType"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseButton" action="saveAction"/>
+            <button id="closeButton" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

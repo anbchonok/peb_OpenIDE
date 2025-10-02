@@ -3,6 +3,16 @@
 
     <menu id="application" title="msg://com.company.peb/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.company.peb.view.user/UserListView.title"/>
+        <item view="Application.list" title="msg://com.company.peb.view.application/applicationListView.title"/>
+        <item view="Advance.list" title="msg://com.company.peb.view.advance/advanceListView.title"/>
+        <item view="Contract.list" title="msg://com.company.peb.view.contract/contractListView.title"/>
+        <item view="ContractStage.list" title="msg://com.company.peb.view.contractstage/contractStageListView.title"/>
+        <item view="ContractTypeDeadline.list"
+              title="msg://com.company.peb.view.contracttypedeadline/contractTypeDeadlineListView.title"/>
+        <item view="CostFOT.list" title="msg://com.company.peb.view.costfot/costFOTListView.title"/>
+        <item view="Customer.list" title="msg://com.company.peb.view.customer/customerListView.title"/>
+        <item view="Department.list" title="msg://com.company.peb.view.department/departmentListView.title"/>
+        <item view="Location.list" title="msg://com.company.peb.view.location/locationListView.title"/>
     </menu>
 
 </menu-config>

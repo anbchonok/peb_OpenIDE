@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://contractStageDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="contractStageDc"
+                  class="com.company.peb.entity.ContractStage">
+            <fetchPlan extends="_base">
+                <property name="location" fetchPlan="_base"/>
+                <property name="customer" fetchPlan="_base">
+                    <property name="location" fetchPlan="_base"/>
+                    <property name="customer" fetchPlan="_base">
+                        <property name="location" fetchPlan="_base"/>
+                        <property name="customer" fetchPlan="_base">
+                            <property name="location" fetchPlan="_base"/>
+                            <property name="customer" fetchPlan="_base">
+                                <property name="location" fetchPlan="_base"/>
+                                <property name="customer" fetchPlan="_base">
+                                    <property name="location" fetchPlan="_base"/>
+                                    <property name="customer" fetchPlan="_base">
+                                        <property name="location" fetchPlan="_base"/>
+                                        <property name="customer" fetchPlan="_base">
+                                            <property name="location" fetchPlan="_base"/>
+                                            <property name="customer" fetchPlan="_base">
+                                                <property name="location" fetchPlan="_base"/>
+                                                <property name="customer" fetchPlan="_base">
+                                                    <property name="location" fetchPlan="_base"/>
+                                                    <property name="customer" fetchPlan="_base">
+                                                        <property name="location" fetchPlan="_base"/>
+                                                        <property name="customer" fetchPlan="_base">
+                                                            <property name="location" fetchPlan="_base"/>
+                                                            <property name="customer" fetchPlan="_base"/>
+                                                        </property>
+                                                    </property>
+                                                </property>
+                                                <property name="contract" fetchPlan="_base"/>
+                                                <property name="user" fetchPlan="_base"/>
+                                            </property>
+                                        </property>
+                                    </property>
+                                </property>
+                            </property>
+                        </property>
+                    </property>
+                    <property name="contract" fetchPlan="_base">
+                        <property name="application" fetchPlan="_base"/>
+                        <property name="typeDeadline" fetchPlan="_base"/>
+                    </property>
+                    <property name="user" fetchPlan="_base">
+                        <property name="department" fetchPlan="_base"/>
+                    </property>
+                </property>
+                <property name="contract" fetchPlan="_base">
+                    <property name="application" fetchPlan="_base"/>
+                    <property name="typeDeadline" fetchPlan="_base"/>
+                </property>
+                <property name="user" fetchPlan="_base">
+                    <property name="department" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader id="contractStageDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="contractStageDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+                <responsiveStep minWidth="40em" columns="2"/>
+            </responsiveSteps>
+            <entityPicker id="locationField" property="location">
+                <actions>
+                    <action id="entityLookupAction" type="entity_lookup"/>
+                    <action id="entityClearAction" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <entityPicker id="customerField" property="customer">
+                <actions>
+                    <action id="entityLookupAction" type="entity_lookup"/>
+                    <action id="entityClearAction" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <textField id="contractStageNumberField" property="contractStageNumber"/>
+            <datePicker id="contractStageDateField" property="contractStageDate"/>
+            <entityPicker id="contractField" property="contract">
+                <actions>
+                    <action id="entityLookupAction" type="entity_lookup"/>
+                    <action id="entityClearAction" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <textField id="fullPaymentPriceField" property="fullPaymentPrice"/>
+            <datePicker id="fullPaymentDateField" property="fullPaymentDate"/>
+            <entityPicker id="userField" property="user">
+                <actions>
+                    <action id="entityLookupAction" type="entity_lookup"/>
+                    <action id="entityClearAction" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <textField id="fotRemainderField" property="fotRemainder"/>
+            <textField id="commentField" property="comment"/>
+            <checkbox id="actsReceivedField" property="actsReceived"/>
+            <datePicker id="tzDateField" property="tzDate"/>
+            <select id="tzAvailabilityField" property="tzAvailability"/>
+            <select id="tzStatusField" property="tzStatus"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseButton" action="saveAction"/>
+            <button id="closeButton" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

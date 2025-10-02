@@ -1,6 +1,5 @@
 package com.company.peb.entity;
 
-import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.SystemLevel;
@@ -8,9 +7,10 @@ import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.security.authentication.JmixUserDetails;
-import org.springframework.security.core.GrantedAuthority;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.UUID;
@@ -18,18 +18,16 @@ import java.util.UUID;
 @JmixEntity
 @Entity
 @Table(name = "USER_", indexes = {
-        @Index(name = "IDX_USER__ON_USERNAME", columnList = "USERNAME", unique = true)
+        @Index(name = "IDX_USER__ON_USERNAME", columnList = "USERNAME", unique = true),
+        @Index(name = "IDX_USER__DEPARTMENT", columnList = "DEPARTMENT_ID")
 })
-public class User implements JmixUserDetails, HasTimeZone {
+public class User implements JmixUserDetails {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     @JmixGeneratedValue
     private UUID id;
 
-    @Version
-    @Column(name = "VERSION", nullable = false)
-    private Integer version;
 
     @Column(name = "USERNAME", nullable = false)
     private String username;
@@ -45,6 +43,16 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "LAST_NAME")
     private String lastName;
 
+    @Column(name = "MIDDLENAME")
+    private String middlename;
+
+    @Column(name = "POSITION_")
+    private String position;
+
+    @JoinColumn(name = "DEPARTMENT_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Department department;
+
     @Email
     @Column(name = "EMAIL")
     private String email;
@@ -52,11 +60,33 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "ACTIVE")
     private Boolean active = true;
 
-    @Column(name = "TIME_ZONE_ID")
-    private String timeZoneId;
 
     @Transient
     private Collection<? extends GrantedAuthority> authorities;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getMiddlename() {
+        return middlename;
+    }
+
+    public void setMiddlename(String middlename) {
+        this.middlename = middlename;
+    }
 
     public UUID getId() {
         return id;
@@ -66,13 +96,6 @@ public class User implements JmixUserDetails, HasTimeZone {
         this.id = id;
     }
 
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(final Integer version) {
-        this.version = version;
-    }
 
     public String getPassword() {
         return password;
@@ -160,17 +183,5 @@ public class User implements JmixUserDetails, HasTimeZone {
                 (lastName != null ? lastName : ""), username).trim();
     }
 
-    @Override
-    public String getTimeZoneId() {
-        return timeZoneId;
-    }
 
-    @Override
-    public boolean isAutoTimeZone() {
-        return true;
-    }
-
-    public void setTimeZoneId(final String timeZoneId) {
-        this.timeZoneId = timeZoneId;
-    }
 }

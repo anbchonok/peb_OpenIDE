@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="peb">
+        <dropForeignKeyConstraint baseTableName="contract_stage" constraintName="fk_contract_stage_on_customer"/>
+    </changeSet>
+    <changeSet id="2" author="peb">
+        <addForeignKeyConstraint baseColumnNames="CUSTOMER_ID" baseTableName="CONTRACT_STAGE"
+                                 constraintName="FK_CONTRACT_STAGE_ON_CUSTOMER" referencedColumnNames="ID"
+                                 referencedTableName="CUSTOMER"/>
+    </changeSet>
+</databaseChangeLog>
